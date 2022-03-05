@@ -1,16 +1,24 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
   margin: 0;
   font-family: "Karla", sans-serif;
+  line-height: 1.5;
 }
 
 .f-c {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.f-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .app {
@@ -28,13 +36,28 @@ body {
   padding: 2rem;
   background-color: #f5f5f5;
   border-radius: 10px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
 .dice {
   display: grid;
-  grid-template: auto auto / repeat(5, 1fr);
+  grid-template: auto auto / repeat(3, 1fr);
+  justify-content: center;
   gap: 1.2rem;
   margin-bottom: 2rem;
+}
+
+.die:nth-last-child(1) {
+  grid-column: 2 / span 2;
+}
+
+@media screen and (min-width: 480px) {
+  .dice {
+    grid-template: auto auto / repeat(5, 1fr);
+  }
+  .die:nth-last-child(1) {
+    grid-column: inherit;
+  }
 }
 
 .die {
@@ -43,6 +66,7 @@ body {
   background: #ffffff;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .number {
@@ -56,11 +80,20 @@ body {
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 0.4em 1.8em;
   font-family: "Karla", sans-serif;
 }
+.title {
+  margin: 0;
+}
 
+.instructions {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  text-align: center;
+  max-width: 35ch;
+  margin: 1.2rem 0 1.8rem 0;
+}
 .button-roll:focus {
   outline: none;
 }
@@ -71,4 +104,10 @@ body {
 
 .die--active {
   background-color: #59e391;
+}
+
+.timer {
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 0 0 1.8rem 0;
 }
